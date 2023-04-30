@@ -17,7 +17,20 @@
     <link rel="stylesheet" href="framework/bootstrap/css/bootstrap.min.css">
     <script src="framework/bootstrap/js/bootstrap.min.js"></script>
 
-    <nav class="navbar navbar-dark bg-dark">
+    <style>
+
+        .navbar {
+            transition: top 0.5s;
+            top: -80px;
+        }
+
+        .navbar.show {
+            top: 0;
+        }
+
+    </style>
+    
+    <nav class="navbar navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img style="filter: grayscale(100%) invert(100%);" src="logo.png" width="30" height="30">
@@ -115,13 +128,20 @@
     </footer>
 
     <script>
+    
         let year = new Date ().getFullYear ()
+        let prevScrollpos = window.pageYOffset
 
-        document.querySelector ("#year").textContent = "2023"
+        document.querySelector ("#year").textContent = year > 2023 ? "2023-" + year : "2023"
 
-        if (year > 2023) {
-            document.querySelector ("#year").textContent = "2023-" + year
+        window.onscroll = function () {
+
+            document.querySelector ("nav").classList.toggle ("show", prevScrollpos > window.pageYOffset)
+
+            prevScrollpos = window.pageYOffset
+
         }
+
     </script>
 </body>
 </html>
