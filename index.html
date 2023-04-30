@@ -19,7 +19,13 @@
     <style>
 
         body {
-            overflow: hidden;
+            overflow-y: scroll;
+            scrollbar-width: none; /* Untuk browser Firefox */
+            -ms-overflow-style: none; /* Untuk browser Internet Explorer dan Microsoft Edge */
+        }
+
+        body::-webkit-scrollbar {
+            display: none; /* Untuk browser Google Chrome, Safari, dan Opera */
         }
         
         .navbar {
